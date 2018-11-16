@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.60"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginFormView">
+    <children>
+        <GridPane alignment="CENTER" hgap="10" vgap="10">
+            <padding>
+                <Insets top="25" right="25" bottom="10" left="25"/>
+            </padding>
+            <children>
+                <Text text="Вход" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      GridPane.columnSpan="2"/>
+                <Label text="Логин" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="loginField" promptText="Введите Логин" GridPane.columnIndex="1"
+                           GridPane.rowIndex="1"/>
+                <Label text="Пароль" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <PasswordField fx:id="passField" promptText="Введите пароль" GridPane.columnIndex="1"
+                               GridPane.rowIndex="2"/>
+                <HBox spacing="10" alignment="BOTTOM_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <Button fx:id="loginBtn" text="Войти"
+                            contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false"
+                            onAction="#handleSubmitButtonAction"/>
+                    <Button text="Отмена" cancelButton="true" mnemonicParsing="false"/>
+                </HBox>
+                <Text fx:id="actionTarget" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>
