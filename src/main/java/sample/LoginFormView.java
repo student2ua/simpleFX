@@ -2,6 +2,7 @@ package sample;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,14 +15,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginFormView implements FxmlView<LoginFormViewModel>, Initializable {
+    @InjectViewModel
+    private LoginFormViewModel viewModel;
+
+    @FXML
+    public Button cancelBtn;
     @FXML
     Button loginBtn;
     @FXML
     TextField loginField;
     @FXML
     PasswordField passField;
-    @InjectViewModel
-    private LoginFormViewModel viewModel;
+    @FXML
+    private Text actionTarget;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -31,11 +37,14 @@ public class LoginFormView implements FxmlView<LoginFormViewModel>, Initializabl
     }
 
     @FXML
-    private Text actionTarget;
+    protected void handleSubmitButtonAction(ActionEvent event) {
+        viewModel.setLoginOk();
+        actionTarget.setText(" sign " + loginField.getText() + " " + passField.getText() + viewModel.isLoginOk());
+    }
 
     @FXML
-    protected void handleSubmitButtonAction(ActionEvent event) {
-        actionTarget.setText(" sign " + loginField.getText() + " " + passField.getText());
+    public void cancelButtonAction(ActionEvent event) {
+        Platform.exit();
 
     }
 }
